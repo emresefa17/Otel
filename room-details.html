@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Details - HotelBeach</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar fade-in">
+            <div class="logo">HotelBeach.</div>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">Our Hotel</a>
+                <a href="#" class="active">Rooms</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="room-details-page">
+        <div class="room-hero">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427" alt="Room View" class="room-hero-img">
+            <div class="room-hero-content">
+                <h1 class="fade-up">Royal Penthouse</h1>
+                <p class="fade-up delay-200">Experience luxury at its finest with our signature penthouse suite</p>
+            </div>
+        </div>
+
+        <section class="room-info-section">
+            <div class="room-info-grid">
+                <div class="room-features-card fade-right">
+                    <h2>Room Features</h2>
+                    <ul class="features-list">
+                        <li>🛏️ 3 King Size Beds</li>
+                        <li>👥 Up to 6 Guests</li>
+                        <li>📏 200 m² / 2153 ft²</li>
+                        <li>🌅 Ocean View</li>
+                        <li>🛁 Luxury Bathroom with Jacuzzi</li>
+                        <li>🍽️ Private Dining Area</li>
+                    </ul>
+                </div>
+
+                <div class="room-amenities-card fade-left">
+                    <h2>Amenities</h2>
+                    <div class="amenities-grid">
+                        <div class="amenity">
+                            <span>🏊‍♂️</span>
+                            <p>Private Pool</p>
+                        </div>
+                        <div class="amenity">
+                            <span>🌡️</span>
+                            <p>Climate Control</p>
+                        </div>
+                        <div class="amenity">
+                            <span>📺</span>
+                            <p>Smart TV</p>
+                        </div>
+                        <div class="amenity">
+                            <span>🎵</span>
+                            <p>Sound System</p>
+                        </div>
+                        <div class="amenity">
+                            <span>☕</span>
+                            <p>Coffee Machine</p>
+                        </div>
+                        <div class="amenity">
+                            <span>🧺</span>
+                            <p>Laundry Service</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-gallery fade-up">
+                <h2>Room Gallery</h2>
+                <div class="gallery-grid">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b" alt="Room View 1">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461" alt="Room View 2">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d" alt="Room View 3">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427" alt="Room View 4">
+                </div>
+            </div>
+
+            <div class="room-description fade-up">
+                <h2>Description</h2>
+                <p>Indulge in the epitome of luxury in our Royal Penthouse suite. Perched atop our prestigious hotel, this expansive suite offers breathtaking ocean views and unparalleled comfort. The spacious living area seamlessly blends modern sophistication with coastal charm, while the private terrace provides an intimate setting for outdoor relaxation.</p>
+                <p>Each of the three bedrooms features a premium king-size bed dressed in fine linens, ensuring a restful night's sleep. The master bathroom boasts a luxurious jacuzzi tub and a separate rainfall shower, complemented by high-end toiletries and plush towels.</p>
+            </div>
+
+            <div class="booking-section fade-up">
+                <div class="price-info">
+                    <span class="price">$1,200</span>
+                    <span class="per-night">per night</span>
+                </div>
+                <button class="btn-book">Book This Room</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fade-up, .fade-right, .fade-left, .fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html> 
