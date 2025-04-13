@@ -9,8 +9,6 @@ body {
     min-height: 100vh;
     position: relative;
     background-color: #FDF8F3;
-    width: 100%;
-    overflow-x: hidden;
 }
 
 .navbar {
@@ -23,10 +21,6 @@ body {
     align-items: center;
     padding: 2rem 4rem;
     z-index: 1000;
-    width: 100%;
-    left: 0;
-    right: 0;
-    box-sizing: border-box;
 }
 
 .logo {
@@ -212,15 +206,13 @@ body {
 .slider-container {
     width: 100%;
     overflow: hidden;
-    margin: 0 auto;
+    position: relative;
 }
 
 .slider-track {
     display: flex;
-    gap: 2rem; 
+    gap: 2rem;
     animation: scroll 40s linear infinite;
-    width: max-content;
-    padding-right: 2rem;
 }
 
 @keyframes scroll {
@@ -269,22 +261,18 @@ body {
 }
 
 .special-activities {
-    padding: 8rem 2rem;
+    padding: 8rem 4rem;
     background-color: #FDF8F3;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
-    gap: 2rem;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    overflow: hidden;
+    gap: 4rem;
 }
 
 .activities-content {
     flex: 1;
-    min-width: 300px;
     max-width: 500px;
 }
 
@@ -322,18 +310,15 @@ body {
 .activities-images {
     flex: 1;
     position: relative;
-    height: auto;
-    min-width: 300px;
-    max-width: 100%;
-    min-height: 400px;
+    height: 600px;
 }
 
 .diving-img {
     position: absolute;
     right: 0;
     top: 0;
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 8px;
     z-index: 1;
@@ -341,11 +326,10 @@ body {
 
 .pool-img {
     position: absolute;
-    right: 20%;
+    right: 100px;
     bottom: -50px;
-    width: 50%;
-    max-width: 300px;
-    height: auto;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     border-radius: 8px;
     z-index: 2;
@@ -689,27 +673,26 @@ body {
     }
 
     .special-activities {
-        padding: 4rem 1.5rem;
+        flex-direction: column;
+        padding: 4rem 2rem;
+    }
+
+    .activities-content {
+        max-width: 100%;
+        text-align: center;
     }
 
     .activities-images {
-        height: 300px;
-        overflow: visible;
-    }
-
-    .diving-img, .pool-img {
-        position: relative;
         width: 100%;
-        height: auto;
-        margin-bottom: 1rem;
+        height: 300px;
+        margin-top: 2rem;
     }
 
     .pool-img {
-        width: 60%;
-        margin: 0 auto;
-        display: block;
-        bottom: 0;
-        right: 0;
+        right: 50%;
+        transform: translateX(50%);
+        width: 200px;
+        height: 200px;
     }
 
     .footer-links {
@@ -745,12 +728,6 @@ body {
 
     .facilities-desc {
         max-width: 100%;
-    }
-
-    .activities-content {
-        max-width: 100%;
-        text-align: center;
-        margin-bottom: 2rem;
     }
 }
 
@@ -1606,9 +1583,7 @@ body {
 /* Mobile Large */
 @media screen and (max-width: 576px) {
     .navbar {
-        width: 100%;
-        left: 0;
-        right: 0;
+        padding: 1.5rem 1.5rem;
     }
     
     .hero-content {
@@ -1897,220 +1872,5 @@ select {
     .hero {
         height: calc(100vh - 80px);
         min-height: 500px;
-    }
-}
-
-/* Fix horizontal scrolling issue */
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-    position: relative;
-}
-
-/* Fix container widths */
-.hero-content,
-.luxury,
-.facilities,
-.special-activities,
-.luxury-rooms,
-.footer,
-.footer-content {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-/* Fix slider overflow */
-.slider-container {
-    overflow: hidden;
-    width: 100%;
-}
-
-/* Fix for mobile view */
-@media screen and (max-width: 768px) {
-    .slider-container {
-        margin: 0;
-        padding: 0 1rem;
-        width: 100%;
-    }
-    
-    .special-activities {
-        padding: 4rem 1rem;
-    }
-    
-    .activities-images {
-        overflow: hidden;
-    }
-    
-    .pool-img {
-        right: 0;
-        max-width: 50%;
-    }
-}
-
-/* Fix image width */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Additional fixes for special-activities section */
-.special-activities {
-    padding: 8rem 2rem;
-    background-color: #FDF8F3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 100%;
-    margin: 0 auto;
-    gap: 2rem;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-.activities-images {
-    flex: 1;
-    position: relative;
-    height: auto;
-    min-width: 300px;
-    max-width: 100%;
-    min-height: 400px;
-}
-
-.diving-img {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 90%;
-    height: 90%;
-    object-fit: cover;
-    border-radius: 8px;
-    z-index: 1;
-}
-
-.pool-img {
-    position: absolute;
-    right: 20%;
-    bottom: -50px;
-    width: 50%;
-    max-width: 300px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    z-index: 2;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-
-/* Adjust footer for small screens */
-@media screen and (max-width: 576px) {
-    .footer-content {
-        padding: 0;
-    }
-    
-    .footer-logo {
-        width: 100%;
-        margin: 0 auto 2rem;
-    }
-    
-    .logo-overlay {
-        padding: 1rem;
-    }
-}
-
-/* Improve layout of sections */
-.luxury,
-.facilities,
-.luxury-rooms {
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-@media screen and (min-width: 992px) {
-    .luxury,
-    .facilities,
-    .luxury-rooms {
-        padding-left: 4rem;
-        padding-right: 4rem;
-    }
-}
-
-/* Fix for horizontal scrolling issues */
-body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-.slider-container {
-    width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-}
-
-.slider-track {
-    display: flex;
-    gap: 2rem; 
-    animation: scroll 40s linear infinite;
-    width: max-content;
-    padding-right: 2rem;
-}
-
-@media screen and (max-width: 768px) {
-    .hero-content br {
-        display: none;
-    }
-    
-    .luxury-content br,
-    .facilities-title br,
-    .activities-content br {
-        display: none;
-    }
-}
-
-/* Additional fixes for mobile */
-@media screen and (max-width: 576px) {
-    .navbar {
-        width: 100%;
-        left: 0;
-        right: 0;
-    }
-}
-
-/* Final fix for content containers */
-.hero-content,
-.luxury-content,
-.luxury-images,
-.facilities-header,
-.slider-container,
-.special-activities,
-.luxury-rooms,
-.rooms-grid,
-.footer-content,
-.footer-links,
-.footer-logo,
-.footer-bottom {
-    max-width: 100vw;
-    box-sizing: border-box;
-    overflow-x: hidden;
-}
-
-/* Clean up slider */
-.slider-container {
-    width: 100%;
-    overflow: hidden;
-}
-
-.slider-track {
-    display: flex;
-    gap: 2rem;
-    animation: scroll 40s linear infinite;
-    width: max-content;
-}
-
-/* Optimize for small screens */
-@media screen and (max-width: 576px) {
-    .hero-content {
-        width: calc(100% - 2rem);
     }
 }
