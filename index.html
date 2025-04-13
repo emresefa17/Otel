@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="HotelBeach - Your luxury beach hotel with exquisite accommodations and world-class amenities">
+    <meta name="theme-color" content="#FDF8F3">
     <title>HotelBeach - Your Gateway to Unforgettable Memories</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://images.unsplash.com">
 </head>
 <body>
     <header>
@@ -240,12 +243,12 @@
         // Mobile Menu Functionality
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
+        const body = document.querySelector('body');
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
-            // Prevent scrolling when mobile menu is open
-            document.body.classList.toggle('menu-open');
+            body.classList.toggle('menu-open');
         });
 
         // Close mobile menu when clicking on a link
@@ -253,43 +256,33 @@
             link.addEventListener('click', () => {
                 mobileMenuBtn.classList.remove('active');
                 navLinks.classList.remove('active');
-                document.body.classList.remove('menu-open');
+                body.classList.remove('menu-open');
             });
         });
-        
-        // Add sticky header behavior
-        const navbar = document.querySelector('.navbar');
-        let lastScrollTop = 0;
-        
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            
-            // Add background when scrolling down
-            if (scrollTop > 50) {
-                navbar.classList.add('navbar-scrolled');
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target)) {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        });
+
+        // Prevent scroll when mobile menu is open
+        function toggleBodyScroll() {
+            if (body.classList.contains('menu-open')) {
+                body.style.overflow = 'hidden';
             } else {
-                navbar.classList.remove('navbar-scrolled');
+                body.style.overflow = '';
             }
-            
-            lastScrollTop = scrollTop;
-        });
-        
-        // Handle images lazy loading
-        if ('loading' in HTMLImageElement.prototype) {
-            // Browser supports native lazy loading
-            document.querySelectorAll('img').forEach(img => {
-                img.setAttribute('loading', 'lazy');
-            });
         }
-        
-        // Handle touch devices
-        document.addEventListener('DOMContentLoaded', function() {
-            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-            
-            if (isTouchDevice) {
-                document.body.classList.add('touch-device');
-            }
-        });
+
+        // Call function when menu state changes
+        const menuObserver = new MutationObserver(toggleBodyScroll);
+        menuObserver.observe(body, { attributes: true, attributeFilter: ['class'] });
     </script>
 </body>
 </html> 

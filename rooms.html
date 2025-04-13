@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Rooms - HotelBeach</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -190,8 +190,6 @@
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
-            // Prevent scrolling when mobile menu is open
-            document.body.classList.toggle('menu-open');
         });
 
         // Close mobile menu when clicking on a link
@@ -199,139 +197,17 @@
             link.addEventListener('click', () => {
                 mobileMenuBtn.classList.remove('active');
                 navLinks.classList.remove('active');
-                document.body.classList.remove('menu-open');
             });
         });
-        
-        // Add sticky header behavior
-        const navbar = document.querySelector('.navbar');
-        let lastScrollTop = 0;
-        
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            
-            // Add background when scrolling down
-            if (scrollTop > 50) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-        
-        // Handle images lazy loading
-        if ('loading' in HTMLImageElement.prototype) {
-            // Browser supports native lazy loading
-            document.querySelectorAll('img').forEach(img => {
-                img.setAttribute('loading', 'lazy');
-            });
-        }
-        
-        // Improved Room filter functionality
+
+        // Room Filter Functionality
         const filterButtons = document.querySelectorAll('.filter-btn');
-        const roomCards = document.querySelectorAll('.room-card-large');
         
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to clicked button
                 button.classList.add('active');
-                
-                const filter = button.textContent.trim();
-                
-                // Add animation class for smooth transitions
-                roomCards.forEach(card => {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                });
-                
-                // Short delay before filtering
-                setTimeout(() => {
-                    // Show all rooms if "All Rooms" is selected
-                    if (filter === 'All Rooms') {
-                        roomCards.forEach(card => {
-                            card.style.display = 'block';
-                            
-                            // Slight delay for each card to create a staggered effect
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 50);
-                        });
-                        return;
-                    }
-                    
-                    // Filter rooms based on room type
-                    roomCards.forEach(card => {
-                        const roomType = card.querySelector('.room-type').textContent.trim();
-                        
-                        if (roomType === filter) {
-                            card.style.display = 'block';
-                            
-                            // Slight delay for animation
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 50);
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                }, 300);
             });
-        });
-        
-        // Handle touch devices
-        document.addEventListener('DOMContentLoaded', function() {
-            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-            
-            if (isTouchDevice) {
-                document.body.classList.add('touch-device');
-                
-                // Adjust filter buttons container for touch scrolling on small screens
-                const filterContainer = document.querySelector('.rooms-filter');
-                if (window.innerWidth < 768 && filterContainer) {
-                    filterContainer.style.overflowX = 'auto';
-                    filterContainer.style.webkitOverflowScrolling = 'touch';
-                    filterContainer.style.msOverflowStyle = '-ms-autohiding-scrollbar';
-                }
-            }
-            
-            // Fix room card layout on mobile
-            if (window.innerWidth < 480) {
-                roomCards.forEach(card => {
-                    const features = card.querySelector('.room-features');
-                    if (features) {
-                        features.style.flexDirection = 'column';
-                        features.style.alignItems = 'flex-start';
-                    }
-                });
-            }
-        });
-        
-        // Resize handler
-        window.addEventListener('resize', function() {
-            if (window.innerWidth < 480) {
-                roomCards.forEach(card => {
-                    const features = card.querySelector('.room-features');
-                    if (features) {
-                        features.style.flexDirection = 'column';
-                        features.style.alignItems = 'flex-start';
-                    }
-                });
-            } else {
-                roomCards.forEach(card => {
-                    const features = card.querySelector('.room-features');
-                    if (features && window.innerWidth >= 768) {
-                        features.style.flexDirection = 'row';
-                        features.style.alignItems = 'center';
-                    }
-                });
-            }
         });
     </script>
 </body>

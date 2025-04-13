@@ -9,13 +9,6 @@ body {
     min-height: 100vh;
     position: relative;
     background-color: #FDF8F3;
-    overflow-x: hidden; /* Prevent horizontal scroll on small devices */
-}
-
-/* Base styles for all screens */
-img {
-    max-width: 100%;
-    height: auto;
 }
 
 .navbar {
@@ -28,18 +21,6 @@ img {
     align-items: center;
     padding: 2rem 4rem;
     z-index: 1000;
-    transition: padding 0.3s ease, background-color 0.3s ease;
-}
-
-.navbar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
-    z-index: -1;
 }
 
 .logo {
@@ -61,7 +42,7 @@ img {
 
 .hero {
     height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?ixlib=rb-4.0.3');
+    background-image: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -82,7 +63,6 @@ img {
     bottom: 15%;
     left: 4rem;
     color: white;
-    width: calc(100% - 8rem);
 }
 
 .hero-content h1 {
@@ -101,7 +81,6 @@ img {
 .cta-buttons {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
 }
 
 .btn-book {
@@ -113,7 +92,6 @@ img {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
-    white-space: nowrap;
 }
 
 .btn-view {
@@ -128,7 +106,6 @@ img {
     align-items: center;
     gap: 0.5rem;
     transition: all 0.3s;
-    white-space: nowrap;
 }
 
 .btn-view:hover {
@@ -621,839 +598,459 @@ img {
     transition-delay: 600ms;
 }
 
-/* Improved Responsive Styles */
-/* Extra large screens (1400px and up) */
-@media screen and (min-width: 1400px) {
-    .container, .luxury-content, .luxury-images, .facilities-header, .rooms-grid-large {
-        max-width: 1320px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-/* Large devices (1200px and up) */
+/* Responsive Design */
 @media screen and (max-width: 1200px) {
     .luxury-content,
     .facilities-header,
     .special-activities,
-    .rooms-header,
-    .room-info-grid {
-        max-width: 100%;
+    .luxury-rooms {
+        padding: 6rem 2rem;
     }
-    
+
     .hero-content h1 {
         font-size: 3.5rem;
     }
-    
+
     .facilities-header {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 2rem;
     }
-    
+
     .facilities-desc {
         max-width: 100%;
     }
 }
 
-/* Medium devices (992px and down) */
 @media screen and (max-width: 992px) {
     .navbar {
-        padding: 1.5rem 3rem;
+        padding: 1.5rem 2rem;
+        background-color: rgba(0,0,0,0.8);
     }
-    
+
     .hero-content {
-        left: 3rem;
-        width: calc(100% - 6rem);
+        left: 2rem;
+        right: 2rem;
     }
-    
+
     .hero-content h1 {
         font-size: 3rem;
     }
-    
+
     .hero-content br {
         display: none;
     }
-    
+
     .luxury-images,
-    .footer-links,
-    .rooms-grid-large,
-    .activities-images {
+    .rooms-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .room-card-large {
-        max-width: 100%;
+        gap: 2rem;
+        padding: 0;
+        max-width: 800px;
         margin: 0 auto;
     }
-    
+
     .luxury-content {
-        padding: 0 1rem;
+        padding: 4rem 2rem;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
     }
-    
+
     .luxury-content h2 {
         font-size: 2.5rem;
+        margin-bottom: 1.5rem;
     }
-    
+
     .luxury-content p {
         font-size: 1rem;
-    }
-    
-    .image-container {
         max-width: 100%;
     }
-    
+
+    .image-container {
+        height: auto;
+        aspect-ratio: 4/3;
+        width: 100%;
+    }
+
     .special-activities {
         flex-direction: column;
-        padding: 4rem 3rem;
-        gap: 3rem;
+        padding: 4rem 2rem;
     }
-    
+
     .activities-content {
         max-width: 100%;
         text-align: center;
     }
-    
+
     .activities-images {
         width: 100%;
-        justify-content: center;
+        height: 300px;
+        margin-top: 2rem;
     }
-    
+
     .pool-img {
-        position: static;
-        transform: none;
+        right: 50%;
+        transform: translateX(50%);
+        width: 200px;
+        height: 200px;
     }
-    
+
     .footer-links {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
-    }
-    
-    .logo-overlay {
         padding: 2rem;
     }
-    
+
+    .logo-overlay {
+        padding: 1.5rem;
+    }
+
     .logo-overlay h2 {
         font-size: 2rem;
     }
-    
+
     .slider-container {
-        width: 90%;
+        margin: 0 -1rem;
+        width: calc(100% + 2rem);
     }
-    
+
     .facilities-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
+        padding: 3rem 2rem;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
     }
-    
+
     .facilities-title h2 {
         font-size: 2.5rem;
+        margin-bottom: 1rem;
     }
-    
+
     .facilities-desc {
         max-width: 100%;
     }
-    
-    .luxury, .facilities, .special-activities, .luxury-rooms {
-        padding: 4rem 3rem;
+}
+
+@media screen and (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
     }
-    
-    .room-info-grid {
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .luxury-content h2 {
+        font-size: 2rem;
+    }
+
+    .facilities-title h2 {
+        font-size: 2rem;
+    }
+
+    .image-container {
+        height: 250px;
+    }
+
+    .activities-images {
+        height: 250px;
+    }
+
+    .footer-links {
         grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .room-features-card, 
-    .room-amenities-card {
-        width: 100%;
-    }
-    
-    .amenities-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .all-rooms {
-        padding: 4rem 2rem;
-    }
-    
-    .rooms-hero-content {
-        width: 90%;
+        text-align: center;
     }
 }
 
-/* Small devices (768px and down) */
 @media screen and (max-width: 768px) {
     .navbar {
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem;
+        background-color: rgba(0,0,0,0.9);
     }
-    
+
     .hero-content {
-        left: 2rem;
+        left: 1rem;
+        right: 1rem;
         bottom: 10%;
-        width: calc(100% - 4rem);
+        text-align: center;
     }
-    
+
     .hero-content h1 {
         font-size: 2.5rem;
         margin-bottom: 1rem;
     }
-    
+
     .hero-content p {
         font-size: 1rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .cta-buttons {
-        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 1rem;
-        width: 100%;
     }
-    
+
     .btn-book, .btn-view {
         width: 100%;
         max-width: 300px;
-        padding: 0.8rem 1.5rem;
-        justify-content: center;
+        text-align: center;
     }
-    
+
     .mobile-menu-btn {
-        display: flex;
+        display: block;
+        position: relative;
+        z-index: 1001;
     }
-    
+
     .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
+        width: 100%;
         height: 100vh;
-        width: 70%;
-        max-width: 300px;
-        background: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0,0,0,0.95);
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: right 0.3s ease;
-        padding: 2rem;
+        transition: transform 0.3s ease;
+        transform: translateX(100%);
         z-index: 1000;
+        padding: 2rem;
     }
-    
+
     .nav-links.active {
         right: 0;
+        transform: translateX(0);
     }
-    
+
     .nav-links a {
-        margin: 1rem 0;
-    }
-    
-    .nav-links a:hover {
+        font-size: 1.5rem;
+        margin: 1.5rem 0;
         opacity: 0.8;
     }
-    
+
+    .nav-links a:hover {
+        opacity: 1;
+    }
+
     .hero-content {
-        bottom: 10%;
+        position: absolute;
+        bottom: 20%;
         left: 1.5rem;
-        width: calc(100% - 3rem);
+        right: 1.5rem;
+        text-align: center;
+        padding: 0 1rem;
     }
-    
+
     .hero-content h1 {
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
-    }
-    
-    .hero-content p {
-        font-size: 0.9rem;
+        font-size: 2.5rem;
         margin-bottom: 1.5rem;
     }
-    
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
     .cta-buttons {
         flex-direction: column;
+        gap: 1.5rem;
         width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
     }
-    
+
     .btn-book,
-    .btn-view {
+    .btn-view,
+    .btn-learn {
         width: 100%;
+        text-align: center;
         justify-content: center;
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
+        padding: 1.2rem;
     }
-    
+
     .luxury-content,
-    .facilities,
+    .facilities-header,
     .special-activities,
-    .luxury-rooms,
-    .footer {
+    .luxury-rooms {
         padding: 4rem 1.5rem;
     }
-    
+
     .luxury-content h2,
     .facilities-title h2,
     .activities-content h2,
     .rooms-header h2 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
+        font-size: 2.2rem;
+        text-align: center;
     }
-    
+
     .rooms-header {
         flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 2rem;
+        gap: 1.5rem;
+        align-items: center;
+        text-align: center;
     }
-    
+
     .btn-view-rooms {
         width: 100%;
+        padding: 1.2rem;
     }
-    
+
     .slide {
         min-width: 280px;
     }
-    
+
     .footer {
-        padding-top: 3rem;
+        padding: 2rem 1.5rem;
     }
-    
+
     .footer-logo {
-        height: 200px;
+        height: 250px;
+        margin-bottom: 3rem;
     }
-    
+
     .footer-bottom {
         flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-        padding: 1.5rem 0;
+        gap: 1.5rem;
+        text-align: center;
+        padding-top: 1.5rem;
     }
-    
+
     .social-links {
         justify-content: center;
-    }
-    
-    .room-info-section {
-        padding: 3rem 1.5rem;
-    }
-    
-    .room-hero-content {
-        left: 1.5rem;
-        bottom: 2rem;
-    }
-    
-    .room-hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .room-features-card,
-    .room-amenities-card {
-        padding: 1.5rem;
-    }
-    
-    .room-features-card h2, 
-    .room-amenities-card h2,
-    .room-gallery h2,
-    .room-description h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .amenities-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .room-info-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    /* Rooms page improvements */
-    .rooms-hero {
-        height: 40vh;
-    }
-    
-    .rooms-hero-content {
-        padding: 0 1.5rem;
-        width: 100%;
-    }
-    
-    .rooms-hero-content h1 {
-        font-size: 2.2rem;
-    }
-    
-    .rooms-hero-content p {
-        font-size: 0.9rem;
-    }
-    
-    .all-rooms {
-        padding: 3rem 1.5rem;
-    }
-    
-    .rooms-filter {
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 1rem;
-        margin-bottom: 2rem;
-        -webkit-overflow-scrolling: touch;
-        white-space: nowrap;
-        display: flex;
-        gap: 0.8rem;
-    }
-    
-    .filter-btn {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-        flex-shrink: 0;
-    }
-    
-    .room-card-large {
-        margin-bottom: 1rem;
-    }
-    
-    .room-info-large {
-        padding: 1.5rem;
-    }
-    
-    .room-info-large h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.8rem;
-    }
-    
-    .room-features {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-    }
-    
-    .room-price {
-        margin-top: 1rem;
+        gap: 2.5rem;
     }
 }
 
-/* Extra small devices (480px and down) */
 @media screen and (max-width: 480px) {
     .navbar {
         padding: 1rem;
     }
-    
+
     .hero-content h1 {
         font-size: 2rem;
     }
-    
+
     .hero-content p br {
         display: none;
     }
-    
+
     .luxury-content,
-    .facilities,
+    .facilities-header,
     .special-activities,
-    .luxury-rooms,
-    .footer {
+    .luxury-rooms {
         padding: 3rem 1rem;
     }
-    
+
     .luxury-content h2,
     .facilities-title h2,
     .activities-content h2,
     .rooms-header h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
-    
+
     .footer-links {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
-    
+
     .footer-logo {
-        height: 180px;
+        height: 200px;
     }
-    
+
     .btn-book-footer {
-        padding: 0.7rem 1.2rem;
+        padding: 1.5rem;
+        font-size: 0.9rem;
     }
-    
+
     .slide {
         min-width: 260px;
     }
-    
+
     .activities-images {
-        gap: 1rem;
+        height: 300px;
     }
-    
+
     .pool-img {
-        position: static;
-        transform: none;
-        height: auto;
-    }
-    
-    .rooms-filter {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-        padding-bottom: 0.5rem;
-    }
-    
-    .filter-btn {
-        font-size: 0.85rem;
-        padding: 0.5rem 1rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .rooms-hero-content h1 {
-        font-size: 1.8rem;
-    }
-    
-    .rooms-hero-content p {
-        font-size: 0.9rem;
-        max-width: 100%;
-    }
-    
-    .rooms-hero {
-        height: 35vh;
-    }
-    
-    .room-features {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    
-    .all-rooms {
-        padding: 2rem 1rem;
-    }
-    
-    .room-card-large .room-img {
+        width: 200px;
         height: 200px;
-    }
-    
-    .room-info-large {
-        padding: 1.2rem;
-    }
-    
-    .room-info-large h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .room-type {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-        margin-bottom: 0.7rem;
-    }
-    
-    .room-price {
-        margin-top: 0.8rem;
-    }
-    
-    .price {
-        font-size: 1.5rem;
-    }
-    
-    .per-night {
-        font-size: 0.9rem;
-    }
-    
-    /* Room details extra small device styles */
-    .room-hero {
-        height: 40vh;
-    }
-    
-    .room-hero-content {
-        left: 1rem;
-        bottom: 1rem;
-        padding: 1rem;
-        width: calc(100% - 2rem);
-    }
-    
-    .room-hero-content h1 {
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .room-hero-content p {
-        font-size: 0.9rem;
-    }
-    
-    .room-info-section {
-        padding: 2rem 1rem;
-        gap: 2rem;
-    }
-    
-    .room-info-grid {
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    
-    .room-features-card,
-    .room-amenities-card {
-        padding: 1.25rem;
-    }
-    
-    .room-features-card h2,
-    .room-amenities-card h2,
-    .room-gallery h2,
-    .room-description h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-    
-    .features-list li {
-        font-size: 1rem;
-        margin-bottom: 0.7rem;
-    }
-    
-    .amenities-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-    }
-    
-    .amenity {
-        padding: 0.5rem;
-    }
-    
-    .amenity span {
-        font-size: 1.5rem;
-        margin-bottom: 0.25rem;
-    }
-    
-    .amenity p {
-        font-size: 0.9rem;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .room-gallery {
-        margin-bottom: 2rem;
-    }
-    
-    .room-description {
-        margin-bottom: 2rem;
-    }
-    
-    .room-description p {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-    }
-    
-    .booking-section {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1.5rem;
-        padding: 1.5rem;
-    }
-    
-    .price-info {
-        text-align: center;
-    }
-    
-    .price {
-        font-size: 2rem;
+        bottom: -30px;
     }
 }
 
-/* Enable touch-friendly hover effects */
+/* Touch cihazlar için hover efektlerini devre dışı bırakma */
 @media (hover: none) {
     .btn-book:hover,
     .btn-view:hover,
     .btn-learn:hover,
     .btn-view-rooms:hover,
-    .btn-book-footer:hover,
-    .luxury-img:hover,
-    .room-img:hover,
-    .gallery-grid img:hover {
+    .room-card:hover .room-img,
+    .luxury-img:hover {
         transform: none;
     }
 }
 
-/* Mobile menu styles */
 .mobile-menu-btn {
     display: none;
-    flex-direction: column;
-    width: 30px;
-    height: 21px;
-    justify-content: space-between;
+    background: none;
+    border: none;
     cursor: pointer;
-    z-index: 1001;
+    padding: 0.5rem;
+    z-index: 1000;
 }
 
 .mobile-menu-btn span {
     display: block;
-    height: 3px;
-    width: 100%;
+    width: 25px;
+    height: 2px;
     background-color: white;
-    border-radius: 3px;
+    margin: 5px 0;
     transition: all 0.3s ease;
 }
 
 @media screen and (max-width: 768px) {
     .mobile-menu-btn {
-        display: flex;
+        display: block;
     }
-    
+
     .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
+        width: 100%;
         height: 100vh;
-        width: 70%;
-        max-width: 300px;
-        background: rgba(0, 0, 0, 0.9);
+        background-color: rgba(26, 26, 26, 0.98);
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         transition: right 0.3s ease;
-        padding: 2rem;
+        backdrop-filter: blur(10px);
     }
-    
+
     .nav-links.active {
         right: 0;
+        transform: translateX(0);
     }
-    
+
     .nav-links a {
+        font-size: 1.2rem;
         margin: 1rem 0;
     }
-    
+
     .mobile-menu-btn.active span:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
+        transform: rotate(45deg) translate(5px, 5px);
     }
-    
+
     .mobile-menu-btn.active span:nth-child(2) {
         opacity: 0;
     }
-    
+
     .mobile-menu-btn.active span:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
+        transform: rotate(-45deg) translate(7px, -7px);
     }
-}
-
-/* Fix for scrollbar jump on hover effects */
-html {
-    scrollbar-width: thin;
-    overflow-y: scroll;
-}
-
-/* Additional CSS for enhanced responsiveness */
-body.menu-open {
-    overflow: hidden;
-}
-
-.navbar-scrolled {
-    background-color: rgba(0, 0, 0, 0.9);
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.navbar-scrolled::before {
-    opacity: 0;
-}
-
-/* Image overlay for gallery */
-.image-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    cursor: pointer;
-}
-
-.image-overlay img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-}
-
-/* Touch device specific styles */
-.touch-device .btn-book:hover,
-.touch-device .btn-view:hover,
-.touch-device .btn-learn:hover,
-.touch-device .luxury-img:hover,
-.touch-device .room-img:hover,
-.touch-device .gallery-grid img:hover {
-    transform: none;
-}
-
-/* Make room and facility cards more touch-friendly */
-@media (max-width: 768px) {
-    .room-card, .slide, .room-card-large {
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-    }
-    
-    .room-features span, .amenity span {
-        padding: 0.3rem 0;
-    }
-    
-    .btn-book, .btn-view, .btn-learn, .btn-view-rooms, .btn-book-footer {
-        padding: 0.8rem 1.5rem;
-        min-height: 44px; /* Minimum touch target size */
-    }
-    
-    .nav-links a {
-        padding: 1rem 0;
-        min-height: 44px;
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-}
-
-/* Fix specific issues with room details page on mobile */
-@media (max-width: 480px) {
-    .room-hero {
-        height: 40vh;
-    }
-    
-    .room-features-card, .room-amenities-card {
-        padding: 1.5rem;
-    }
-    
-    .amenity {
-        padding: 0.5rem;
-    }
-    
-    .amenity span {
-        font-size: 1.5rem;
-    }
-    
-    .room-gallery {
-        padding: 0;
-    }
-}
-
-/* Improve form elements for touch devices */
-input, select, textarea, button {
-    font-size: 16px !important; /* Prevent zoom on mobile */
-}
-
-/* Fix for iOS specific issues */
-@supports (-webkit-touch-callout: none) {
-    .hero, .rooms-hero, .room-hero {
-        background-attachment: scroll !important;
-    }
-}
-
-/* Enhance transitions for smoother experience */
-.nav-links, .btn-book, .btn-view, .navbar, .mobile-menu-btn span {
-    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-/* Fix for scrollbar jump on hover effects */
-html {
-    scrollbar-width: thin;
-    overflow-y: scroll;
 }
 
 /* Room Details Page Styles */
@@ -1583,7 +1180,6 @@ html {
     object-fit: cover;
     border-radius: 8px;
     transition: transform 0.3s ease;
-    cursor: pointer;
 }
 
 .gallery-grid img:hover {
@@ -1626,6 +1222,80 @@ html {
 .per-night {
     color: #666;
     font-size: 1.1rem;
+}
+
+/* Responsive styles for room details page */
+@media screen and (max-width: 992px) {
+    .room-hero-content {
+        left: 2rem;
+    }
+
+    .room-hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .room-info-section {
+        padding: 3rem 2rem;
+    }
+
+    .room-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .room-hero {
+        height: 50vh;
+    }
+
+    .room-hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .room-info-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .booking-section {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .price-info {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .room-hero-content {
+        left: 1rem;
+        right: 1rem;
+    }
+
+    .room-hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .amenities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .room-info-section {
+        padding: 2rem 1rem;
+    }
 }
 
 /* Rooms Page Styles */
@@ -1710,7 +1380,6 @@ html {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-    width: 100%;
 }
 
 .room-card-large {
@@ -1722,7 +1391,6 @@ html {
     text-decoration: none;
     color: inherit;
     transition: transform 0.3s ease;
-    width: 100%;
 }
 
 .room-card-large:hover {
@@ -1755,42 +1423,454 @@ html {
     margin-bottom: 1rem;
 }
 
+.room-features {
+    display: flex;
+    gap: 1.5rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
 .room-price {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
 }
 
-/* Additional responsive fixes */
-@media screen and (max-width: 1024px) {
+.price {
+    font-size: 1.8rem;
+    color: #1A1A1A;
+    font-weight: 500;
+}
+
+.per-night {
+    color: #666;
+}
+
+/* Responsive styles for rooms page */
+@media screen and (max-width: 1200px) {
+    .all-rooms {
+        padding: 3rem 2rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .rooms-hero-content h1 {
+        font-size: 3rem;
+    }
+
     .rooms-grid-large {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: 1fr;
+    }
+
+    .rooms-filter {
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        flex: 1;
+        min-width: 150px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .rooms-hero {
+        height: 40vh;
+    }
+
+    .rooms-hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .all-rooms {
+        padding: 2rem 1.5rem;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .room-card-large {
-        border-radius: 8px;
+    .rooms-hero-content h1 {
+        font-size: 2rem;
     }
-    
-    .room-card-large .room-img {
-        border-radius: 8px 8px 0 0;
+
+    .rooms-hero-content p {
+        font-size: 1rem;
     }
-    
-    .filter-btn {
-        white-space: nowrap;
+
+    .room-features {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .all-rooms {
+        padding: 2rem 1rem;
     }
 }
 
-/* Fix for fixed navbar on mobile */
-@media screen and (max-width: 768px) {
-    header {
-        height: 64px; /* Match navbar height on mobile */
+/* Enhanced Responsive Styles */
+
+/* Tablet Landscape */
+@media screen and (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
     }
     
-    .room-details-page,
-    .rooms-page {
-        padding-top: 64px;
+    .luxury-content h2,
+    .facilities-title h2,
+    .activities-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .slider-track {
+        gap: 1.5rem;
+    }
+    
+    .slide {
+        min-width: 250px;
+    }
+}
+
+/* Tablet Portrait */
+@media screen and (max-width: 768px) {
+    /* Existing styles already cover most of this breakpoint */
+    
+    /* Enhance existing mobile menu styles */
+    .mobile-menu-btn {
+        display: block;
+        z-index: 1001;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: #1A1A1A;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    /* Improve Section Spacing */
+    .luxury, 
+    .facilities, 
+    .special-activities,
+    .luxury-rooms,
+    .footer {
+        padding: 4rem 2rem;
+    }
+    
+    /* Improve grid layouts */
+    .rooms-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* Fix slider for smaller screens */
+    .slider-container {
+        margin: 0 -2rem;
+        padding: 0 2rem;
+        width: calc(100% + 4rem);
+    }
+}
+
+/* Mobile Large */
+@media screen and (max-width: 576px) {
+    .navbar {
+        padding: 1.5rem 1.5rem;
+    }
+    
+    .hero-content {
+        left: 1.5rem;
+        right: 1.5rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .btn-book, .btn-view {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .luxury, 
+    .facilities, 
+    .special-activities,
+    .luxury-rooms,
+    .footer {
+        padding: 3rem 1.5rem;
+    }
+    
+    .luxury-content h2,
+    .facilities-title h2,
+    .activities-content h2 {
+        font-size: 2rem;
+    }
+    
+    .luxury-content p,
+    .facilities-desc p,
+    .activities-content p {
+        font-size: 1rem;
+    }
+    
+    .facilities-header {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .facilities-desc {
+        max-width: 100%;
+    }
+    
+    .slide {
+        min-width: 220px;
+        aspect-ratio: 1/1;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Mobile Small */
+@media screen and (max-width: 375px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .luxury-content h2,
+    .facilities-title h2,
+    .activities-content h2 {
+        font-size: 1.75rem;
+    }
+    
+    .slide {
+        min-width: 200px;
+    }
+    
+    .special-activities {
+        flex-direction: column;
+    }
+    
+    .activities-content {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    .activities-images {
+        width: 100%;
+    }
+    
+    .footer-logo {
+        height: 200px;
+    }
+    
+    .logo-overlay h2 {
+        font-size: 1.75rem;
+    }
+    
+    .btn-book-footer {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Fix for special-activities section */
+@media screen and (max-width: 992px) {
+    .special-activities {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .activities-content,
+    .activities-images {
+        width: 100%;
+    }
+    
+    .activities-images {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .diving-img, .pool-img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        position: static;
+    }
+}
+
+/* Fix images aspect ratio */
+@media screen and (max-width: 768px) {
+    .image-container {
+        aspect-ratio: 1/1;
+    }
+    
+    .room-card {
+        height: auto;
+    }
+    
+    .room-img {
+        aspect-ratio: 16/9;
+    }
+}
+
+/* Add a light overlay to improve text readability on mobile */
+@media screen and (max-width: 576px) {
+    .hero::before {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+    }
+    
+    .logo {
+        font-size: 1.25rem;
+    }
+}
+
+/* Fix for landscape orientation on mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hero-content {
+        bottom: 10%;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
+        margin-bottom: 1rem;
+    }
+    
+    .nav-links {
+        padding: 2rem;
+        justify-content: flex-start;
+    }
+}
+
+/* Fix touchscreen hover effects */
+@media (hover: none) {
+    .btn-book:hover,
+    .btn-view:hover,
+    .btn-learn:hover,
+    .btn-view-rooms:hover,
+    .btn-book-footer:hover,
+    .luxury-img:hover,
+    .room-img:hover {
+        transform: none;
+    }
+}
+
+/* Added menu-open state styling */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Add an overlay when mobile menu is open */
+@media screen and (max-width: 768px) {
+    body.menu-open::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+}
+
+/* Optimize images for better responsive behavior */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Improve image loading performance */
+.hero {
+    background-image: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        background-image: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+}
+
+/* Fix iOS input styling */
+input, 
+button, 
+textarea, 
+select {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+/* Improve touch target sizes for mobile */
+@media screen and (max-width: 576px) {
+    .nav-links a,
+    .footer-column a,
+    .social-links a {
+        padding: 0.5rem 0;
+        display: inline-block;
+    }
+    
+    .btn-book, 
+    .btn-view, 
+    .btn-learn, 
+    .btn-view-rooms, 
+    .btn-book-footer {
+        min-height: 44px;
+    }
+}
+
+/* Fix for iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+    .nav-links {
+        height: -webkit-fill-available;
+    }
+    
+    .hero {
+        height: calc(100vh - 80px);
+        min-height: 500px;
     }
 }
