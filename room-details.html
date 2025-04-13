@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <title>Room Details - HotelBeach</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -104,6 +104,60 @@
         </section>
     </main>
 
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo fade-up">
+                <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f" alt="Beach" class="footer-bg">
+                <div class="logo-overlay">
+                    <h2>HotelBeach.</h2>
+                    <button class="btn-book-footer">Book Your<br>Stay</button>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column fade-up delay-200">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rooms.html">Rooms</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column fade-up delay-400">
+                    <h3>Pages</h3>
+                    <ul>
+                        <li><a href="#">Our Hotel</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Restaurant</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column fade-up delay-400">
+                    <h3>Email</h3>
+                    <p>info@hotelbeach.com</p>
+                    <h3 class="phone-title">Phone</h3>
+                    <p>(603) 555-0123</p>
+                </div>
+
+                <div class="footer-column fade-up delay-600">
+                    <h3>Address</h3>
+                    <p>3891 Ranchview Dr.<br>Richardson, California<br>62639</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom fade-up delay-600">
+                <div class="hotel-name">HotelBeach.</div>
+                <div class="social-links">
+                    <a href="#">X</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
         // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
@@ -128,6 +182,8 @@
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
+            // Prevent scrolling when mobile menu is open
+            document.body.classList.toggle('menu-open');
         });
 
         // Close mobile menu when clicking on a link
@@ -135,7 +191,65 @@
             link.addEventListener('click', () => {
                 mobileMenuBtn.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
             });
+        });
+        
+        // Add sticky header behavior
+        const navbar = document.querySelector('.navbar');
+        let lastScrollTop = 0;
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            
+            // Add background when scrolling down
+            if (scrollTop > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Handle images lazy loading
+        if ('loading' in HTMLImageElement.prototype) {
+            // Browser supports native lazy loading
+            document.querySelectorAll('img').forEach(img => {
+                img.setAttribute('loading', 'lazy');
+            });
+        }
+        
+        // Gallery image click functionality
+        const galleryImages = document.querySelectorAll('.gallery-grid img');
+        
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                // Create a fullscreen overlay with the image
+                const overlay = document.createElement('div');
+                overlay.classList.add('image-overlay');
+                
+                const largeImage = document.createElement('img');
+                largeImage.src = img.src;
+                largeImage.alt = img.alt;
+                
+                overlay.appendChild(largeImage);
+                document.body.appendChild(overlay);
+                
+                // Close overlay when clicking on it
+                overlay.addEventListener('click', () => {
+                    overlay.remove();
+                });
+            });
+        });
+        
+        // Handle touch devices
+        document.addEventListener('DOMContentLoaded', function() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            
+            if (isTouchDevice) {
+                document.body.classList.add('touch-device');
+            }
         });
     </script>
 </body>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <title>HotelBeach - Your Gateway to Unforgettable Memories</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -244,6 +244,8 @@
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenuBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
+            // Prevent scrolling when mobile menu is open
+            document.body.classList.toggle('menu-open');
         });
 
         // Close mobile menu when clicking on a link
@@ -251,7 +253,42 @@
             link.addEventListener('click', () => {
                 mobileMenuBtn.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
             });
+        });
+        
+        // Add sticky header behavior
+        const navbar = document.querySelector('.navbar');
+        let lastScrollTop = 0;
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            
+            // Add background when scrolling down
+            if (scrollTop > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Handle images lazy loading
+        if ('loading' in HTMLImageElement.prototype) {
+            // Browser supports native lazy loading
+            document.querySelectorAll('img').forEach(img => {
+                img.setAttribute('loading', 'lazy');
+            });
+        }
+        
+        // Handle touch devices
+        document.addEventListener('DOMContentLoaded', function() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            
+            if (isTouchDevice) {
+                document.body.classList.add('touch-device');
+            }
         });
     </script>
 </body>
